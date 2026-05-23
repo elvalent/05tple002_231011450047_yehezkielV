@@ -1,0 +1,33 @@
+<script>
+function hitungGaji(nama, jamKerja, gajiPerJam, lembur) {
+
+    let gajiPokok = jamKerja * gajiPerJam;
+    let bonus = 0;
+
+    if (lembur > 10) {
+        bonus = 500000;
+    } else if (lembur > 5) {
+        bonus = 250000;
+    }
+
+    let totalGaji = gajiPokok + bonus;
+    let pajak = totalGaji * 0.05;
+    let gajiBersih = totalGaji - pajak;
+
+    return {
+        namaKaryawan: nama,
+        gajiPokok: gajiPokok,
+        bonus: bonus,
+        pajak: pajak,
+        gajiBersih: gajiBersih
+    };
+}
+
+let hasil = hitungGaji("Andi", 40, 50000, 8);
+
+document.write("Nama: " + hasil.namaKaryawan + "<br>");
+document.write("Gaji Pokok: " + hasil.gajiPokok + "<br>");
+document.write("Bonus: " + hasil.bonus + "<br>");
+document.write("Pajak: " + hasil.pajak + "<br>");
+document.write("Gaji Bersih: " + hasil.gajiBersih);
+</script>

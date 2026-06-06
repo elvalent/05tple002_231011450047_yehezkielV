@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Objek Mahasiswa</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+        }
+        th, td{
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Input Data Mahasiswa</h2>
+
+    <form id="formMahasiswa">
+        <label>NIM :</label><br>
+        <input type="text" id="nim" required><br><br>
+
+        <label>Nama :</label><br>
+        <input type="text" id="nama" required><br><br>
+
+        <label>Jurusan :</label><br>
+        <input type="text" id="jurusan" required><br><br>
+
+        <label>Fakultas :</label><br>
+        <input type="text" id="fakultas" required><br><br>
+
+        <button type="submit">Simpan</button>
+    </form>
+
+    <h2>Data Mahasiswa</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+                <th>Jurusan</th>
+                <th>Fakultas</th>
+            </tr>
+        </thead>
+        <tbody id="tabelData"></tbody>
+    </table>
+
+    <script>
+        // Array Objek
+        let mahasiswa = [];
+
+        document.getElementById("formMahasiswa").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            let data = {
+                nim: document.getElementById("nim").value,
+                nama: document.getElementById("nama").value,
+                jurusan: document.getElementById("jurusan").value,
+                fakultas: document.getElementById("fakultas").value
+            };
+
+            mahasiswa.push(data);
+
+            tampilkanData();
+
+            this.reset();
+        });
+
+        function tampilkanData(){
+            let tabel = document.getElementById("tabelData");
+            tabel.innerHTML = "";
+
+            mahasiswa.forEach(item => {
+                tabel.innerHTML += `
+                    <tr>
+                        <td>${item.nim}</td>
+                        <td>${item.nama}</td>
+                        <td>${item.jurusan}</td>
+                        <td>${item.fakultas}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+
+</body>
+</html>
